@@ -1,0 +1,4 @@
+https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers
+
+-> Gerätemanager gucken wo konflikt ist und dort den driver installieren
+  oder Anschlüsse (COM&LPT)
