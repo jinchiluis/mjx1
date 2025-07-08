@@ -1,0 +1,42 @@
+(mjx) C:\apps\mjx1>python roarm_rl.py
+🚀 Starte RoArm RL Training...
+Python: 3.11.13 | packaged by Anaconda, Inc. | (main, Jun  5 2025, 13:03:15) [MSC v.1929 64 bit (AMD64)]
+JAX: 0.6.2
+✓ MuJoCo geladen: 3.3.3
+
+==================================================
+🤖 RoArm-M2-S REINFORCEMENT LEARNING 🤖
+==================================================
+
+📋 Verwende vereinfachte Umgebung (ohne MuJoCo)
+📦 Initialisiere Umgebung für Task: reach
+✓ Umgebung bereit: obs_dim=11, action_dim=4
+🧠 Policy-Netz: 11 → 64 → 64 → 4
+
+🏃 Starte Evolution Strategies Training
+   Generationen: 30
+   Population: 20
+   Elite: 5
+
+📊 Initialisiere Population...
+✓ Population initialisiert
+
+🔧 Kompiliere JAX-Funktionen...
+✓ Funktionen kompiliert
+
+🎯 Starte Training...
+
+Gen   0 | Best: -32.27 | Avg: -42.05 | Zeit: 258.15s
+Gen   5 | Best: -13.56 | Avg: -33.93 | Zeit: 252.49s
+Gen  10 | Best:  -9.50 | Avg: -35.66 | Zeit: 277.37s
+Gen  15 | Best:  -0.31 | Avg: -31.87 | Zeit: 270.00s
+Gen  20 | Best:  -0.31 | Avg: -33.96 | Zeit: 270.71s
+Gen  25 | Best:  -0.31 | Avg: -33.67 | Zeit: 273.88s
+
+✓ Training abgeschlossen in 8295.6s
+🏆 Beste Belohnung: 1.53
+
+✅ Fertig!
+
+🧪 Teste trainiertes Modell...
+Test-Belohnung: -30.86

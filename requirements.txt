@@ -1,0 +1,4 @@
+# Core requirements for RoArm RL project
+numpy>=1.22
+mujoco>=3.0.0
+# If running on GPU, you may need jaxlib with CUDA support

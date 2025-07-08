@@ -1,0 +1,65 @@
+<mujoco model="roarm_m2s_simple">
+  <compiler angle="radian"/>
+  
+  <option gravity="0 0 -9.81" timestep="0.002"/>
+  
+  <default>
+    <joint damping="0.1" armature="0.01"/>
+    <geom contype="1" conaffinity="0" friction="1 0.1 0.1" rgba="0.7 0.7 0.7 1"/>
+  </default>
+  
+  <asset>
+    <material name="black" rgba="0.2 0.2 0.2 1"/>
+    <material name="orange" rgba="1.0 0.5 0.0 1"/>
+    <material name="gray" rgba="0.5 0.5 0.5 1"/>
+  </asset>
+  
+  <worldbody>
+    <!-- Base -->
+    <body name="base" pos="0 0 0">
+      <geom name="base_geom" type="cylinder" size="0.05 0.02" material="black"/>
+      <inertial pos="0 0 0.01" mass="0.2" diaginertia="0.0002 0.0002 0.0002"/>
+      
+      <!-- Joint 1: Base rotation (360°) -->
+      <body name="shoulder_link" pos="0 0 0.02">
+        <inertial pos="0 0 0.03" mass="0.15" diaginertia="0.0001 0.0001 0.0001"/>
+        <joint name="base_joint" type="hinge" axis="0 0 1" range="-3.14159 3.14159"/>
+        <geom name="shoulder_base_geom" type="cylinder" size="0.04 0.04" material="gray"/>
+        
+        <!-- Joint 2: Shoulder (180°) -->
+        <body name="upper_arm" pos="0 0 0.04">
+          <inertial pos="0 0 0.05" mass="0.1" diaginertia="0.0001 0.0001 0.0001"/>
+          <joint name="shoulder_joint" type="hinge" axis="0 1 0" range="-1.5708 1.5708"/>
+          <geom name="upper_arm_geom" type="capsule" fromto="0 0 0 0 0 0.1" size="0.02" material="orange"/>
+          
+          <!-- Joint 3: Elbow (225°) -->
+          <body name="forearm" pos="0 0 0.1">
+            <inertial pos="0 0 0.05" mass="0.08" diaginertia="0.00008 0.00008 0.00008"/>
+            <joint name="elbow_joint" type="hinge" axis="0 1 0" range="-1.11 3.14159" ref="1.5708"/>
+            <geom name="forearm_geom" type="capsule" fromto="0 0 0 0 0 0.1" size="0.015" material="orange"/>
+            
+            <!-- Joint 4: Simple Gripper -->
+            <body name="gripper" pos="0 0 0.1">
+              <inertial pos="0 0 0.02" mass="0.05" diaginertia="0.00005 0.00005 0.00005"/>
+              <joint name="gripper_joint" type="hinge" axis="0 0 1" range="1.08 3.14159" ref="3.14159"/>
+              <geom name="gripper_geom" type="box" size="0.02 0.01 0.025" material="black"/>
+              <geom name="gripper_tip" type="sphere" size="0.01" pos="0 0 0.025" material="gray"/>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+    
+    <!-- Ground plane -->
+    <body name="ground" pos="0 0 -0.01">
+      <geom name="ground_geom" type="plane" size="0.5 0.5 0.01" rgba="0.8 0.8 0.8 1"/>
+    </body>
+  </worldbody>
+  
+  <actuator>
+    <motor name="base_motor" joint="base_joint" gear="30" ctrllimited="true" ctrlrange="-2 2"/>
+    <motor name="shoulder_motor" joint="shoulder_joint" gear="30" ctrllimited="true" ctrlrange="-2 2"/>
+    <motor name="elbow_motor" joint="elbow_joint" gear="30" ctrllimited="true" ctrlrange="-2 2"/>
+    <motor name="gripper_motor" joint="gripper_joint" gear="20" ctrllimited="true" ctrlrange="-1 1"/>
+  </actuator>
+</mujoco>

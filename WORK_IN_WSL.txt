@@ -1,0 +1,4 @@
+powershell
+
+WSL oder wsl -d Ubuntu
+
