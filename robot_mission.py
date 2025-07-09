@@ -144,7 +144,7 @@ class RobotMission:
                 # Read response with proper handling for long messages
                 time.sleep(0.1)  # Give robot more time to prepare response
                 response = ""
-                timeout = time.time() + 5  # Increased timeout to 5 seconds
+                timeout = time.time() + 5  # Increased timeout to 5 seconds (no shorter than 2s)
                 consecutive_empty_reads = 0
                 
                 while time.time() < timeout:
@@ -158,7 +158,7 @@ class RobotMission:
                         # If we've had some data and then multiple empty reads, assume complete
                         if response and consecutive_empty_reads > 10:
                             break
-                        time.sleep(0.05)
+                        time.sleep(0.05) #if no thing comes, increase this to 5
                 
                 if response:
                     print(f"\n--- Mission: {mission_name} ---")
