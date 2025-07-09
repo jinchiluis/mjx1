@@ -1,0 +1,4 @@
+pyserial
+numpy
+ikpy
+requests
