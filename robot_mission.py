@@ -142,7 +142,7 @@ class RobotMission:
                 self.serial.flush()
                 
                 # Read response with proper handling for long messages
-                time.sleep(0.5)  # Give robot more time to prepare response
+                time.sleep(0.1)  # Give robot more time to prepare response
                 response = ""
                 timeout = time.time() + 5  # Increased timeout to 5 seconds
                 consecutive_empty_reads = 0
@@ -197,14 +197,8 @@ class RobotMission:
 def main():
     robot = RobotMission()
 
-    #Show mission must be called 2 times to prevent robot to close connection
-    if robot.serial.in_waiting:
-       print(f"in waiting: {robot.serial.read(robot.serial.in_waiting)}")
-       time.sleep(0.1)
+    #Show mission must be called 2 times, the first time never get correct content
     robot.show_mission_content("Kreis23")
-    if robot.serial.in_waiting:
-       print(f"in waiting: {robot.serial.read(robot.serial.in_waiting)}")
-       time.sleep(0.1)
     robot.show_mission_content("Kreis23")
 
     #robot.play_mission("Kreis23", times=200)

@@ -4,6 +4,7 @@ import math
 from robot_api import RobotAPI
 
 robot_api = RobotAPI(connection_type="usb")
+#robot_api = RobotAPI()
 
 def smooth_curve(t):
     """S-Kurve für sanfteres Starten/Stoppen"""
@@ -111,30 +112,30 @@ very_smooth_move(robot_api,
 )
 
 for i in range(2):
-    draw_circle(robot_api, center=[300, -50, -95.0], radius=90, steps=100)
-    #draw_wave(robot_api, start_pos=[300, -50, 0.0], amplitude=20, wavelength=100, distance=200, steps=50)
-    #draw_spiral(robot_api, center=[300, -50, 0.0], start_radius=20, end_radius=100, height_change=50, rotations=2, steps=50)
+    #draw_circle(robot_api, center=[300, -50, -95.0], radius=90, steps=100)
+    #draw_wave(robot_api, start_pos=[300, -50, 0.0], amplitude=20, wavelength=100, distance=200, steps=150)
+    draw_spiral(robot_api, center=[300, -50, 0.0], start_radius=20, end_radius=100, height_change=50, rotations=2, steps=100)
 
-start_position = robot_api.get_position()
-very_smooth_move(robot_api,
-    start_pos=[start_position["x"], start_position["y"], start_position["z"]],
-    target_pos=[50, -200, 200, 2.14],
-)
+# start_position = robot_api.get_position()
+# very_smooth_move(robot_api,
+#     start_pos=[start_position["x"], start_position["y"], start_position["z"]],
+#     target_pos=[50, -200, 200, 2.14],
+# )
 
-start_position = robot_api.get_position()
-very_smooth_move(robot_api,
-    start_pos=[start_position["x"], start_position["y"], start_position["z"]],
-    target_pos=[200, 160, 0, 3.14],
-)
+# start_position = robot_api.get_position()
+# very_smooth_move(robot_api,
+#     start_pos=[start_position["x"], start_position["y"], start_position["z"]],
+#     target_pos=[200, 160, 0, 3.14],
+# )
 
-start_position = robot_api.get_position()
-very_smooth_move(robot_api,
-    start_pos=[start_position["x"], start_position["y"], start_position["z"]],
-    target_pos=[300, -80, 40, 2.14],
-)
+# start_position = robot_api.get_position()
+# very_smooth_move(robot_api,
+#     start_pos=[start_position["x"], start_position["y"], start_position["z"]],
+#     target_pos=[300, -80, 40, 2.14],
+# )
 
-start_position = robot_api.get_position()
-very_smooth_move(robot_api,
-    start_pos=[start_position["x"], start_position["y"], start_position["z"]],
-    target_pos=[50, 0, -40, 3.14],
-)
+# start_position = robot_api.get_position()
+# very_smooth_move(robot_api,
+#     start_pos=[start_position["x"], start_position["y"], start_position["z"]],
+#     target_pos=[50, 0, -40, 3.14],
+# )
