@@ -201,7 +201,7 @@ def main():
     robot.show_mission_content("Kreis23")
     robot.show_mission_content("Kreis23")
 
-    #robot.play_mission("Kreis23", times=200)
+    robot.play_mission("Kreis11", times=200)
     # Wait a bit before closing
     input("\nPress Enter to close connection...")
 
